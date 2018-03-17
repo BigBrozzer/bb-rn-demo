@@ -7,6 +7,7 @@ import {
 } from 'recompose';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import withRecorder from 'big-brother/src/react-native';
 
 import Router from './router';
 import I18n from './i18n';
@@ -21,6 +22,7 @@ const withReduxConnect = connect(
 );
 
 export default compose(
+  withRecorder,
   withReduxConnect,
   branch(props => !props.isAppReady, renderComponent(renderNothing())),
   lifecycle({
